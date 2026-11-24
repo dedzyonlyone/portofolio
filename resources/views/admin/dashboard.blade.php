@@ -76,16 +76,15 @@
 
 <!-- Welcome Card -->
 <div class="mt-8 bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 rounded-2xl shadow-xl p-8 text-white relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
-    <!-- Decorative -->
     <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl"></div>
 
     <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-            <h2 class="text-2xl font-bold mb-2">Selamat Datang, {{ auth()->user()->name }}! 👋</h2>
+            <h2 class="text-2xl font-bold mb-2">Selamat Datang, {{ auth()->user()->name ?? 'Admin' }}! 👋</h2>
             <p class="text-slate-300 max-w-xl">Kelola konten portfolio kamu dari menu sidebar. Mulai dari isi <strong class="text-brand-400">Profil</strong> dulu, lalu tambahkan <strong class="text-brand-400">Skills</strong>, <strong class="text-brand-400">Projects</strong>, dan <strong class="text-brand-400">Hobi</strong>.</p>
         </div>
-        <a href="{{ route('portfolio.index') }}" target="_blank"
+        <a href="{{ route('home') }}" target="_blank"
            class="btn-shine bg-brand-500 hover:bg-brand-400 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg flex items-center gap-2 whitespace-nowrap">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -96,7 +95,8 @@
 </div>
 
 <!-- Quick Actions -->
-<div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+    <!-- TOMBOL EDIT PROFIL (ADMIN) -->
     <a href="{{ route('admin.profile.index') }}" class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 card-lift group" data-aos="fade-up" data-aos-delay="500">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition">
@@ -111,6 +111,7 @@
         </div>
     </a>
 
+    <!-- TOMBOL KELOLA SKILLS (ADMIN) -->
     <a href="{{ route('admin.skills.index') }}" class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 card-lift group" data-aos="fade-up" data-aos-delay="600">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition">
@@ -125,6 +126,7 @@
         </div>
     </a>
 
+    <!-- TOMBOL KELOLA PROJECTS (ADMIN) -->
     <a href="{{ route('admin.projects.index') }}" class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 card-lift group" data-aos="fade-up" data-aos-delay="700">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition">
@@ -139,6 +141,7 @@
         </div>
     </a>
 
+    <!-- TOMBOL KELOLA HOBI (ADMIN) -->
     <a href="{{ route('admin.hobbies.index') }}" class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 card-lift group" data-aos="fade-up" data-aos-delay="800">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition">
@@ -149,6 +152,21 @@
             <div>
                 <div class="text-sm font-semibold text-brand-900">Kelola Hobi</div>
                 <div class="text-xs text-slate-500">Minat & kegiatan</div>
+            </div>
+        </div>
+    </a>
+
+    <!-- TOMBOL PESAN MASUK (ADMIN) -->
+    <a href="{{ route('admin.contacts.index') }}" class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 card-lift group" data-aos="fade-up" data-aos-delay="900">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition">
+                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            <div>
+                <div class="text-sm font-semibold text-brand-900">Pesan Masuk</div>
+                <div class="text-xs text-slate-500">Baca pesan user</div>
             </div>
         </div>
     </a>

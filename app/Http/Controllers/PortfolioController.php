@@ -12,11 +12,15 @@ class PortfolioController extends Controller
     public function index()
     {
         $profile = Profile::first();
-        $hardSkills = Skill::where('type', 'hard')->get();
-        $softSkills = Skill::where('type', 'soft')->get();
-        $projects = Project::latest()->get();
-        $hobbies = Hobby::all();
+        
+        // Ambil skills dan kelompokkan berdasarkan kategori (frontend, backend, dll)
+        $skills = Skill::all()->groupBy(function($skill) {
+            return $skill->category ?? 'lainnya';
+        });
 
-        return view('portfolio.index', compact('profile', 'hardSkills', 'softSkills', 'projects', 'hobbies'));
+        // Ambil 3 project terbaru untuk featured
+        $featuredProjects = Project::latest()->take(3)->get();
+
+        return view('dashboard', compact('profile', 'skills', 'featuredProjects'));
     }
 }
